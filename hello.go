@@ -2,10 +2,17 @@ package main
 
 import "fmt"
 
-func Hello() string {
-	return "Hello World"
+const prefixHello = "Hello"
+
+func Hello(greet string) string {
+	if greet == ""{
+		greet = "!"
+	}
+
+	return prefixHello + " " + greet
+	
 }
 
 func main() {
-	fmt.Println(Hello())
+	fmt.Println(Hello("World"))
 }
