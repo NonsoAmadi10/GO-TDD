@@ -41,18 +41,22 @@ func (d Dictionary) Add(dict, definition string) error{
 }
 
 func (d Dictionary) Update(dict, definition string) error{
-	d[dict] = definition
 
 	_, err := d.Search(dict)
 
 	switch err {
-	case nil :
-		d[dict] = definition
-	case ErrNotFound:
-		return ErrWordNotExist
-	default:
-		return err
-	}
+    case ErrNotFound:
+        return ErrWordNotExist
+    case nil:
+        d[dict] = definition
+    default:
+        return err
+    }
 
+    return nil
+}
+
+func (d Dictionary) Delete(dict string) error {
+	delete(d, dict)
 	return nil
 }
