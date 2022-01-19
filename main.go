@@ -1,7 +1,11 @@
 package main
 
-import "os"
+import (
+	"os"
+	"time"
+)
 
 func main() {
-	Countdown(os.Stdout)
+	sleeper := &ConfigurableSleeper{1 * time.Second, time.Sleep}
+	Countdown(os.Stdout, sleeper)
 }
