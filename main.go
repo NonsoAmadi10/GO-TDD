@@ -1,10 +1,7 @@
 package main
 
-import "fmt"
+import "os"
 
 func main() {
-	fmt.Println(Hello("World", "eng"))
-
-	fmt.Println(Add(3, 8))
-	fmt.Println(Repeat("b", 6))
+	Countdown(os.Stdout)
 }
