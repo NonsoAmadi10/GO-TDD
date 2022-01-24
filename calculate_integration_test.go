@@ -8,12 +8,23 @@ import (
 
 func TestCalculate(t *testing.T) {
 
-	t.Run("it should increase a number by 2", func(t *testing.T) {
-		got := Calculate(2)
-		want := 4
+	assert := assert.New(t)
 
-		assert.Equal(t, got, want)
+	t.Run("it should increase a number by 2", func(t *testing.T) {
+		var tests = []struct {
+			input int
+			expected int 
+		}{
+			{2, 4},
+			{-1, 1},
+			{0, 2},
+			{100, 102},
+			{-5, -3},
+		}
 		
+		for _, test := range tests {
+			assert.Equal(Calculate(test.input), test.expected)
+		}
 
 	})
 	
